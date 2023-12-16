@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Employee</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>Employee Information</h1>
+    <br />
+    <section class="empInfoContainer">
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput displayNone">
+        <label class="empInfoLabel">rootUser:</label>
+        <input
+          id="empInfoRootUser"
+          type="text"
+          class="empInfoInput"
+          value="<%=data.rootUser%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput displayNone">
+        <label class="empInfoLabel">_id:</label>
+        <input
+          id="empInfo_id"
+          type="text"
+          class="empInfoInput"
+          value="<%=data._id%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput">
+        <label for="empInfoName" class="empInfoLabel">Name:</label>
+        <input
+          spellcheck="false"
+          id="empInfoName"
+          type="text"
+          class="empInfoInput"
+          value="<%=data.name%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput">
+        <label for="empInfoSection" class="empInfoLabel">Section:</label>
+        <select
+          class="empInfoSelect"
+          name="secretQuestions"
+          id="empInfoSection"
+        >
+          <% if (data.section) { %>
+          <option value="<%=data.section%>" disabled selected>
+            <%=data.section%>
+          </option>
+          <% } else { %>
+          <option value="" disabled selected>Select section</option>
+          <% } %> <% sections.forEach(q => { %>
+          <option value="<%=q.sectionName%>"><%=q.sectionName%></option>
+          <% }); %>
+        </select>
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput">
+        <label for="empInfoTitle" class="empInfoLabel">Title:</label>
+        <input
+          spellcheck="false"
+          id="empInfoTitle"
+          type="text"
+          class="empInfoInput"
+          value="<%=data.title%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput">
+        <label for="empInfoVacationsLimit" class="empInfoLabel"
+          >Vacations Limit:</label
+        >
+        <input
+          id="empInfoVacationsLimit"
+          type="text"
+          class="empInfoInput"
+          type="number"
+          value="<%=data.vacationsLimit%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <!-- ************************************ -->
+      <div class="empInfoLabelInput">
+        <label for="empInfoVacationsUsage" class="empInfoLabel"
+          >Vacations Usage:</label
+        >
+        <input
+          id="empInfoVacationsUsage"
+          type="text"
+          class="empInfoInput"
+          type="number"
+          value="<%=data.vacationsUsage%>"
+        />
+      </div>
+      <!-- ************************************ -->
+      <% if(data.name){ %>
+      <button id="modifyButton" class="modifyButton update">Update</button>
+      <% }else{ %>
+      <button id="modifyButton" class="modifyButton create">Create</button>
+      <% } %>
+    </section>
+    <%- include('./partials/feedback.ejs') %>
+  </body>
+  <script src="/logic/modifyLogic.js"></script>
+</html>

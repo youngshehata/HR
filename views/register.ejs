@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>Create new account</h1>
+    <section class="RegisterSection">
+      <label for="usernameInput">Username:</label>
+      <input class="registerSectionInput" type="text" id="usernameInput" />
+    </section>
+
+    <section class="RegisterSection">
+      <label for="passwordInput">Password:</label>
+      <input class="registerSectionInput" type="password" id="passwordInput" />
+    </section>
+
+    <section class="RegisterSection">
+      <label for="passwordConfirmInput">Password confirmation:</label>
+      <input
+        class="registerSectionInput"
+        type="password"
+        id="passwordConfirmInput"
+      />
+    </section>
+
+    <section class="RegisterSection">
+      <label for="passwordConfirmInput">Select secret question:</label>
+      <select
+        class="registerSectionSelect"
+        name="secretQuestions"
+        id="secretQuestionInput"
+      >
+        <option value="" disabled selected>Select question</option>
+        <% questions.forEach(q => { %>
+        <option value="<%=q.question%>"><%=q.question%></option>
+        <% }); %>
+      </select>
+    </section>
+
+    <section class="RegisterSection">
+      <label for="passwordConfirmInput">Secret answer:</label>
+      <input class="registerSectionInput" type="text" id="secretAnswerInput" />
+    </section>
+
+    <button
+      tabindex="auto"
+      type="submit"
+      id="registerButton"
+      class="registerButton"
+    >
+      Register
+    </button>
+    <%- include('./partials/feedback.ejs') %>
+  </body>
+  <script src="/logic/registerLogic.js"></script>
+</html>

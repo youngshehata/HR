@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Convert</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>Convert</h1>
+    <p class="convertParagraph">
+      Seed your <span class="convertHighlight">MongoDB</span> or Transform your
+      <span class="convertHighlight">CSV</span> file into
+      <span class="convertHighlight">JSON</span> file in few seconds
+    </p>
+
+    <span class="convertSelectLabel">Please select you CSV file</span>
+    <label id="labelAsInput" class="labelAsInput" for="fileInput"
+      >Select File...</label
+    >
+    <input
+      class="convertFileInput"
+      type="file"
+      name="csvFile"
+      id="fileInput"
+      accept=".csv"
+    />
+    <span class="fileUploadFeedback" id="fileFeedback"></span>
+    <section class="transformOptions">
+      <article class="transformMethod">
+        <div class="imageContainer">
+          <img class="transformImg" src="/mongo.svg" alt="MongoDB" />
+        </div>
+        <button id="mongoButton" class="disabledButton methodConvertButton">
+          Seed
+        </button>
+      </article>
+      <article class="transformMethod">
+        <div class="imageContainer">
+          <img class="transformImg" src="/json.svg" alt="JSON" />
+        </div>
+        <button
+          id="jsonButton"
+          class="disabledButton methodConvertButton jsonButton"
+        >
+          Convert
+        </button>
+      </article>
+    </section>
+    <p class="instructions">
+      Please make sure the first line of the
+      <span class="csvSpan">.csv</span> file contains the keys (field names)
+      <br />
+      Any null values will be translated to false in mongodb document
+    </p>
+    <p class="instructions instructions2ndLine">
+      Please make sure
+      <span class="mongoSpan">MongoDB (Community Server)</span> is installed on
+      your machine <br />
+      and running on port 27017
+    </p>
+    <%- include('./partials/feedback.ejs') %>
+  </body>
+  <script src="/logic/convertLogic.js"></script>
+</html>

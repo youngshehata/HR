@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>Login</h1>
+    <section class="loginSection">
+      <label for="usernameInput">Username:</label>
+      <input class="loginSectionInput" type="text" id="usernameInput" />
+    </section>
+
+    <section class="loginSection">
+      <label for="passwordInput">Password:</label>
+      <input class="loginSectionInput" type="password" id="passwordInput" />
+    </section>
+
+    <button type="submit" id="loginButton" class="loginButton">Login</button>
+
+    <a class="forgotPasswordLink" href="/forgotpassword"
+      >Forgot you password?</a
+    >
+    <%- include('./partials/feedback.ejs') %>
+  </body>
+  <script src="/logic/loginLogic.js"></script>
+</html>

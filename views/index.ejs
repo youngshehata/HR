@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>HR Application</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>HR Application</h1>
+    <br />
+    <p class="homeParagraph">
+      Convert your <span class="csvSpan">.CSV</span> file to
+      <span class="mongoSpan">MongoDB</span> collection or transform it into
+      <span class="jsonSpan">JSON</span> file
+    </p>
+    <p class="homeParagraph">
+      Add your employees information and print
+      <span class="pdfSpan">PDF</span> templates for them
+    </p>
+    <section class="getStarted">
+      <span>Get started now!</span>
+    </section>
+    <section class="cards">
+      <article class="cardContainer">
+        <img src="/mongo.svg" alt="mongo" class="cardImg" />
+        <a href="/convert" class="cardText greenText">Seed</a>
+      </article>
+      <!-- -------------------------------------------------- -->
+      <article class="cardContainer">
+        <img src="/json.svg" alt="json" class="cardImg" />
+        <a href="/convert" class="cardText blueText">Convert</a>
+      </article>
+      <!-- -------------------------------------------------- -->
+      <article class="cardContainer">
+        <img src="/pdf.svg" alt="pdf" class="cardImg pdfImg" />
+        <a id="pdfAnchor" href="/register" class="cardText redText">Generate</a>
+      </article>
+      <!-- -------------------------------------------------- -->
+    </section>
+  </body>
+  <script>
+    window.onload = () => {
+      const pdfAnchor = document.getElementById("pdfAnchor");
+      fetch("/isLogged", {
+        method: "GET",
+      })
+        .then(async (response) => {
+          if (response.status >= 400) {
+            return (pdfAnchor.href = "/register");
+          }
+          pdfAnchor.href = "/employees";
+        })
+        .catch((err) => {
+          pdfAnchor.href = "/register";
+        });
+    };
+  </script>
+</html>

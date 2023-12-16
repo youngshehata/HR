@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <title>Employees</title>
+  </head>
+  <body>
+    <%- include('./partials/navbar_user.ejs') %>
+    <h1>Employees</h1>
+    <br />
+    <section class="employeesTopSection">
+      <div id="addNewContainer" class="addNewContainer">
+        <span>Add new employee</span>
+        <img class="employeeTopSectionImage" src="/add.svg" alt="new" />
+      </div>
+      <div class="searchContainer">
+        <img
+          src="/search.svg"
+          alt="search"
+          class="employeeTopSectionImage searchImg"
+          id="searchImg"
+        />
+        <input
+          id="searchInput"
+          type="text"
+          class="searchInput"
+          spellcheck="false"
+        />
+      </div>
+      <div class="totalContainer">
+        <span>Employees count:</span>
+        <span class="totalSpan"> <%= count %> </span>
+      </div>
+    </section>
+    <section class="employeesData">
+      <table class="employeesTable">
+        <tr>
+          <th class="t_sequnce">#</th>
+          <th class="t_name">Name</th>
+          <th class="t_section">Section</th>
+          <th class="t_title">Title</th>
+          <th class="t_limit">Vacations Limit</th>
+          <th class="t_usage">Vacations Usage</th>
+          <th class="t_pdf">PDF</th>
+          <th class="t_actions">Actions</th>
+        </tr>
+
+        <% employees.forEach((emp,index) => { %>
+        <tr id="<%= emp._id %>">
+          <td><%=index+1+((page*10)-10)%></td>
+          <td><%=emp.name %></td>
+          <td><%=emp.section %></td>
+          <td><%=emp.title %></td>
+          <td><%=emp.vacationsLimit %></td>
+          <td><%=emp.vacationsUsage%></td>
+          <td><%- include('./partials/pdfList.ejs',{employee:emp}) %></td>
+          <td>
+            <div class="actionsContainer">
+              <img src="/edit.svg" alt="edit" class="actionImage" /><img
+                src="/delete.svg"
+                alt="delete"
+                class="actionImage"
+              />
+            </div>
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+      <div class="pagiationDiv">
+        <img
+          id="previousPageImg"
+          src="/left.svg"
+          alt="left"
+          class="pagiationImage"
+        />
+        <p>Page <span> <%= page %> </span> of <span> <%=lastPage %> </span></p>
+        <img
+          id="nextPageImg"
+          src="/right.svg"
+          alt="right"
+          class="pagiationImage <%= lastPage %>"
+        />
+      </div>
+    </section>
+    <%- include('./partials/feedback.ejs') %>
+  </body>
+  <script src="/logic/employeesLogic.js"></script>
+</html>

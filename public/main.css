@@ -1,0 +1,798 @@
+@keyframes spining {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-image: url("/hr_background.svg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  height: 100dvh;
+  width: 100dvw;
+}
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+h1 {
+  font-size: 2vmax;
+  font-weight: 500;
+  color: rgb(197, 234, 255);
+  padding: 0;
+  margin: 1vmax;
+}
+
+nav,
+.navbarClass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: linear-gradient(
+    to right top,
+    #e7e7e8,
+    #ededee,
+    #f3f3f3,
+    #f9f9f9,
+    #ffffff
+  );
+  margin: 0;
+  padding: 0;
+}
+nav {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 5px 7px 0px;
+  border-bottom-left-radius: 8vmax;
+  border-bottom-right-radius: 8vmax;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbarClass {
+  height: fit-content;
+  width: 50%;
+  padding: 0.75vmax 1vmax;
+  color: #000;
+  list-style: none;
+  justify-content: space-around;
+  font-size: 1.3vmax;
+}
+
+.navbarItem {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.3vmax;
+  outline: none;
+}
+.navbarItem::after {
+  position: absolute;
+  content: "";
+  transition: all 0.15s ease-in-out;
+  display: block;
+  width: 0%;
+  margin-top: 0.25vmax;
+  height: 0.2vmax;
+  background-color: navy;
+}
+
+.navbarItem:hover {
+  color: navy;
+}
+.navbarItem:hover::after {
+  width: 100%;
+}
+
+.homeParagraph {
+  font-size: 1.4vmax;
+  padding-top: 1vmax;
+  margin: 0;
+}
+
+.getStarted {
+  font-size: 1.6vmax;
+  padding-top: 2vmax;
+  color: rgb(197, 234, 255);
+}
+
+.indexConvertButton {
+  padding: 0.5vmax 1vmax;
+  border-radius: 0.25vmax;
+  margin-left: 1vmax;
+  font-size: 1.2vmax;
+  background-color: rgb(36, 146, 190);
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(36, 146, 190, 0.1) 0px -12px 30px,
+    rgba(36, 146, 190, 0.1) 0px 4px 6px, rgba(36, 146, 190, 0.07) 0px 12px 13px,
+    rgba(36, 146, 190, 0.07) 0px -3px 5px;
+}
+.indexConvertButton:hover {
+  color: #000;
+  background-color: rgb(71, 202, 254);
+  box-shadow: rgba(36, 146, 190, 0.8) 0px -12px 30px,
+    rgba(36, 146, 190, 0.8) 0px 4px 6px, rgba(36, 146, 190, 0.8) 0px 12px 13px,
+    rgba(36, 146, 190, 0.9) 0px -3px 5px;
+}
+
+.transformOptions {
+  margin-top: 2vmax;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+.transformImg {
+  height: 10vmax;
+  width: 10vmax;
+}
+.convertParagraph {
+  font-size: 1.5vmax;
+  margin: 0;
+  padding-top: 2vmax;
+}
+.convertHighlight {
+  color: gold;
+}
+.convertSelectLabel {
+  margin: 1vmax;
+  font-size: 1.2vmax;
+  color: rgb(200, 200, 200);
+}
+.convertFileInput {
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+.labelAsInput {
+  font-size: 1vmax;
+  font-weight: 500;
+  padding: 0.25vmax 1vmax;
+  border-radius: 0.5vmax;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(120, 120, 120, 0.25) 1.95px 1.95px 2.6px;
+}
+.labelAsInput:hover {
+  background-color: gold;
+  transform: scale(1.1);
+}
+.transformMethod {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileUploadFeedback {
+  padding: 0.25vmax 1vmax;
+  font-size: 1.1vmax;
+  color: limegreen;
+  margin-top: 1vmax;
+}
+
+.methodConvertButton {
+  background-color: green;
+  cursor: pointer;
+  min-width: 80%;
+  color: #fff;
+  padding: 0.5vmax 1.25vmax;
+  border-radius: 5vmax;
+  font-size: 1.2vmax;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.methodConvertButton:hover {
+  transform: scale(1.1);
+}
+
+.jsonButton {
+  background-color: #1c59a5;
+}
+
+.disabledButton {
+  pointer-events: none;
+  background-color: grey;
+  color: rgb(48, 52, 52);
+}
+
+.instructions {
+  text-align: center;
+  color: rgb(167, 153, 136);
+  margin-top: 1.5vmax;
+  font-size: 1.1vmax;
+  padding: 0.5vmax 1vmax;
+}
+.csvSpan {
+  font-size: 1.4vmax;
+  color: rgb(237, 229, 184);
+}
+
+.feedbackSection {
+  margin: 1vmax;
+  width: 40%;
+  background-image: linear-gradient(
+    to right top,
+    #e7e7e8,
+    #ededee,
+    #f3f3f3,
+    #f9f9f9,
+    #ffffff
+  );
+  color: #000;
+  font-size: 1.1vmax;
+  border-radius: 10vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateY(2vmax);
+}
+
+.feedbackSectionActive {
+  transform: none;
+  opacity: 1;
+}
+
+.feedbackText {
+  padding: 1vmax 1.5vmax;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+}
+
+.feedbackImg {
+  height: 2.5vmax;
+  width: 2.5vmax;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5vmax 1vmax;
+}
+.feedbackImgloading {
+  content: url("/loading.svg");
+  animation: spining 1s linear infinite;
+}
+.feedbackImgcorrect {
+  content: url("/correct.svg");
+}
+.feedbackImgwrong {
+  content: url("/wrong.svg");
+}
+
+.RegisterSection,
+.loginSection {
+  margin: 0.5vmax;
+  position: relative;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vmax;
+}
+
+.registerSectionInput,
+.loginSectionInput,
+.registerSectionSelect {
+  width: 90%;
+  padding: 0.5vmax 0.5vmax;
+  border-radius: 0.5vmax;
+  outline: none;
+  border: 0.1vmax #000 solid;
+  margin: 0.25vmax;
+  text-align: center;
+  font-size: 1.1vmax;
+  font-weight: 600;
+  border: 0.2vmax #fff solid;
+  box-shadow: rgba(0, 0, 0, 0.85) 1.95px 1.95px 2.6px;
+}
+.registerSectionSelect {
+  width: 93%;
+}
+.registerSectionSelect:focus,
+.loginSectionInput:focus,
+.registerSectionInput:focus {
+  border-color: #c5eaff;
+}
+
+.registerButton,
+.loginButton {
+  min-width: 10%;
+  margin-top: 2vmax;
+  padding: 0.5vmax 1vmax;
+  border-radius: 0.25vmax;
+  margin-left: 1vmax;
+  font-size: 1.2vmax;
+  background-color: #c5eaff;
+  border: 0.15vmax #c5eaff solid;
+  color: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10vmax;
+}
+
+.registerButton:active,
+.registerButton:focus,
+.registerButton:hover,
+.loginButton:active,
+.loginButton:focus,
+.loginButton:hover {
+  transform: scale(1.1);
+  background-color: #fff;
+}
+
+.instructions2ndLine {
+  padding: 0;
+  margin: 0;
+}
+.mongoSpan {
+  color: rgb(0, 210, 0);
+}
+.jsonSpan {
+  color: #3992ff;
+}
+.pdfSpan {
+  color: #ff0400;
+}
+
+.forgotPasswordLink {
+  width: 32%;
+  font-size: 1.1vmax;
+  padding: 2vmax 1vmax;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.forgotPasswordLink:hover {
+  transform: scale(1.03);
+  color: gold;
+}
+
+.cards {
+  margin-top: 3vmax;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cardContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImg {
+  height: 10vmax;
+  width: 10vmax;
+  padding: 2vmax;
+}
+
+.cardText {
+  width: 70%;
+  text-align: center;
+  font-size: 1.4vmax;
+  background-color: orange;
+  padding: 0.5vmax 0vmax;
+  border-radius: 5vmax;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cardText:hover {
+  transform: scale(1.1);
+}
+
+.greenText {
+  background-color: #439945;
+}
+
+.blueText {
+  background-color: #1c59a5;
+}
+
+.redText {
+  background-color: #a32724;
+}
+
+.checkUsername,
+.changePwButton {
+  background-color: #346eb5;
+  outline: none;
+  border: 0.2vmax #000 solid;
+  border-radius: 5vmax;
+  padding: 0.2vmax 2.5vmax;
+  font-size: 1.2vmax;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  margin-top: 0.5vmax;
+}
+.checkUsername:hover,
+.changePwButton:hover {
+  background-color: green;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.changePwButton {
+  padding: 0.5vmax 2vmax;
+  margin-top: 1vmax;
+}
+
+.questionInput {
+  color: rgb(90, 90, 90);
+}
+
+/* ******************************************************************** */
+/* Employees  */
+/* ******************************************************************** */
+
+.employeesTopSection {
+  min-height: 10vh;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #000;
+  font-size: 1.2vmax;
+}
+.addNewContainer,
+.searchContainer,
+.totalContainer {
+  position: relative;
+  min-width: 15%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5vmax 1.5vmax;
+  border-radius: 10vmax;
+  border: 0.2vmax #000 solid;
+}
+
+.searchContainer {
+  min-height: 40%;
+  min-width: 40%;
+  border-radius: 0.75vmax;
+}
+.addNewContainer {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.addNewContainer:hover {
+  transform: scale(1.1);
+  background-color: gold;
+}
+
+.addNewContainer:hover img {
+  transform: rotate(180deg);
+}
+
+.searchInput {
+  height: 100%;
+  width: 96%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1.4vmax;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 1.75vmax;
+}
+.searchImg {
+  position: absolute;
+  left: 2%;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+.searchImg:hover {
+  transform: scale(1.1);
+}
+
+.employeeTopSectionImage {
+  height: 2vmax;
+  width: 2vmax;
+  padding: 0 0.5vmax;
+  transition: all 0.2s ease-in-out;
+}
+
+.totalSpan {
+  padding: 0 1vmax;
+  font-size: 1.5vmax;
+  font-weight: 600;
+}
+
+.employeesData {
+  width: 90%;
+  max-height: 60%;
+  position: relative;
+  margin-top: 2vmax;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vmax;
+}
+
+.employeesTable {
+  width: 100%;
+  border-radius: 1vmax;
+}
+
+.employeesTable tr:first-child {
+  border-radius: 1vmax;
+}
+
+.employeesTable th {
+  background-color: #000;
+  color: #fff;
+  padding: 1vmax 0;
+  font-weight: 500;
+}
+
+.employeesTable tr {
+  text-align: center;
+}
+.employeesTable td {
+  padding: 0.2vmax 0;
+}
+.employeesTable tr:nth-child(even) {
+  background-color: #fff;
+  color: #000;
+}
+.employeesTable tr:nth-child(odd) {
+  background-color: #dedede;
+  color: #000;
+}
+
+.t_sequnce {
+  width: 5%;
+}
+.t_name {
+  width: 20%;
+}
+.t_section {
+  width: 15%;
+}
+.t_title {
+  width: 15%;
+}
+.t_limit {
+  width: 12.5%;
+}
+.t_usage {
+  width: 12.5%;
+}
+.t_pdf {
+  width: 10%;
+}
+.t_actions {
+  width: 5%;
+}
+
+.pagiationDiv {
+  margin-top: 1vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vmax;
+}
+.pagiationDiv p {
+  padding: 0 1vmax;
+}
+.pagiationImage {
+  opacity: 0.85;
+  height: 2vmax;
+  width: 2vmax;
+  transition: all 0.2s ease-in-out;
+}
+.pagiationImage:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.pdfListContainer {
+  position: relative;
+  height: 100%;
+  min-width: 80%;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  text-align: inherit;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.generateSpan {
+  border: 0.1vmax #000 solid;
+  border-radius: 0.2vmax;
+  padding: 0.1vmax 1vmax;
+  box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9vmax;
+  font-weight: 600;
+}
+
+.generateSpan:hover {
+  transform: translateX(-0.1vmax) translateY(-0.05vmax);
+  box-shadow: rgba(0, 0, 0, 0.45) 2.95px 2.95px 3.6px;
+}
+
+.pdfUl {
+  position: absolute;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  top: 115%;
+  box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 2.6px;
+  border-radius: 0.5vmax;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  transform: scaleY(2vmax);
+  z-index: 1;
+}
+.pdfUlHidden {
+  max-height: 0%;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 0px;
+}
+.pdfLi {
+  padding: 0.5vmax 1vmax;
+  cursor: pointer;
+  font-size: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.pdfLi:hover {
+  background-color: rgba(165, 114, 232, 0.7);
+}
+
+.generateloadingImgContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* pointer-events: none; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.generateLoadingImg {
+  height: 1.5vmax;
+  width: 1.5vmax;
+  animation: spining 1s linear infinite;
+}
+
+.actionsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.actionImage {
+  cursor: pointer;
+  height: 1.5vmax;
+  width: 1.5vmax;
+  transition: all 0.2s ease-in-out;
+}
+.actionImage:hover {
+  transform: scale(1.2);
+}
+
+.errorSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.erroImg {
+  height: 5vmax;
+  width: 5vmax;
+  padding: 2vmax;
+}
+
+.errorText {
+  padding: 0;
+  margin: 0;
+  font-size: 1.4vmax;
+}
+
+.empInfoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 30%;
+}
+
+.empInfoLabelInput {
+  position: relative;
+  margin: 0.5vmax 0vmax;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.empInfoLabelInput label {
+  width: 100%;
+  text-align: left;
+  font-size: 1.2vmax;
+  padding-bottom: 0.2vmax;
+}
+.empInfoSelect,
+.empInfoLabelInput input {
+  width: 100%;
+  padding: 0.5vmax 0.5vmax;
+  font-size: 1.3vmax;
+  text-align: center;
+  border-radius: 0.4vmax;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 6px, rgba(0, 0, 0, 0.7) 0px 3px 6px;
+}
+.empInfoSelect {
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.displayNone {
+  display: none;
+}
+
+.modifyButton {
+  margin-top: 0.5vmax;
+  min-width: 30%;
+  font-size: 1.3vmax;
+  background-color: #c5eaff;
+  border-radius: 10vmax;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 6px, rgba(0, 0, 0, 0.5) 0px 3px 6px;
+  padding: 0.3vmax 1vmax;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.modifyButton:hover {
+  transform: scale(1.1);
+  background-color: #7ccfff;
+}
