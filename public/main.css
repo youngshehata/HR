@@ -358,8 +358,13 @@ a {
   color: #ff0400;
 }
 
-.forgotPasswordLink {
+.forgotPasswordContainer {
+  position: relative;
   width: 32%;
+  margin-top: 2vmax;
+}
+
+.forgotPasswordLink {
   font-size: 1.1vmax;
   padding: 2vmax 1vmax;
   cursor: pointer;
