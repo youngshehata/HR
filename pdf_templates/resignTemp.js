@@ -28,7 +28,7 @@ module.exports = (data) => {
           scrollbar-width: none; /* Firefox */
           transition: all 0.3s ease-in-out;
           scroll-behavior: smooth;
-          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          font-family: "Calibri", "Gill Sans", "Gill Sans MT", "Trebuchet MS",
             sans-serif;
         }
         body::-webkit-scrollbar {
@@ -51,7 +51,7 @@ module.exports = (data) => {
         .agazaMainContainer {
           position: relative;
           font-size: 1rem;
-          font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          font-family: "Calibri", "Gill Sans", "Gill Sans MT", "Trebuchet MS",
             sans-serif;
           display: flex;
           flex-direction: column;
